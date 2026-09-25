@@ -11,3 +11,4 @@ langgraph
 pydantic
 fastembed
 python-docx
+python-pptx
