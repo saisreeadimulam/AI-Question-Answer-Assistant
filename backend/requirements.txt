@@ -13,3 +13,4 @@ fastembed
 python-docx
 python-pptx
 pandas
+python-multipart
