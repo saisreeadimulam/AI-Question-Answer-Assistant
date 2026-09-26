@@ -121,7 +121,7 @@ export function SplitLayout() {
         ];
       });
 
-      const res = await fetch("http://localhost:8000/upload", {
+      const res = await fetch("https://ai-question-answer-assistant.onrender.com/upload", {
         method: "POST",
         body: formData,
       });
@@ -209,7 +209,7 @@ export function SplitLayout() {
     abortControllerRef.current = controller;
 
     try {
-      const response = await fetch("http://localhost:8000/chat", {
+      const response = await fetch("https://ai-question-answer-assistant.onrender.com/chat", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -259,11 +259,11 @@ export function SplitLayout() {
                     prev.map((msg) =>
                       msg.id === aiMessageId
                         ? {
-                            ...msg,
-                            content:
-                              msg.content +
-                              `\n\n<span style="color: #f87171">Error: ${data.message}</span>`,
-                          }
+                          ...msg,
+                          content:
+                            msg.content +
+                            `\n\n<span style="color: #f87171">Error: ${data.message}</span>`,
+                        }
                         : msg
                     )
                   );
@@ -286,11 +286,11 @@ export function SplitLayout() {
           prev.map((msg) =>
             msg.id === aiMessageId
               ? {
-                  ...msg,
-                  content:
-                    msg.content +
-                    `\n\n<span style="color: #f87171">Network Error: Could not connect to backend server.</span>`,
-                }
+                ...msg,
+                content:
+                  msg.content +
+                  `\n\n<span style="color: #f87171">Network Error: Could not connect to backend server.</span>`,
+              }
               : msg
           )
         );
@@ -344,11 +344,10 @@ export function SplitLayout() {
             {/* History Toggle */}
             <button
               onClick={() => setIsHistoryOpen(!isHistoryOpen)}
-              className={`p-2 rounded-xl border transition-all cursor-pointer ${
-                isHistoryOpen
-                  ? "bg-[#38BDF8] text-[#0B0F19] border-[#38BDF8] shadow-md font-bold"
-                  : "glass-card text-slate-300 border-white/10 hover:border-[#38BDF8]"
-              }`}
+              className={`p-2 rounded-xl border transition-all cursor-pointer ${isHistoryOpen
+                ? "bg-[#38BDF8] text-[#0B0F19] border-[#38BDF8] shadow-md font-bold"
+                : "glass-card text-slate-300 border-white/10 hover:border-[#38BDF8]"
+                }`}
               title="Saved Sessions"
             >
               <History className="w-4 h-4" />
@@ -400,11 +399,10 @@ export function SplitLayout() {
                           handleRestoreSession(s);
                           setIsHistoryOpen(false);
                         }}
-                        className={`p-3 rounded-xl border text-left cursor-pointer transition-all flex items-center justify-between group ${
-                          s.id === currentSessionId
-                            ? "bg-[#38BDF8]/15 border-[#38BDF8]/40 text-[#38BDF8] shadow-md"
-                            : "glass-card text-slate-300 hover:border-[#38BDF8]/50 hover:text-[#FFFFFF]"
-                        }`}
+                        className={`p-3 rounded-xl border text-left cursor-pointer transition-all flex items-center justify-between group ${s.id === currentSessionId
+                          ? "bg-[#38BDF8]/15 border-[#38BDF8]/40 text-[#38BDF8] shadow-md"
+                          : "glass-card text-slate-300 hover:border-[#38BDF8]/50 hover:text-[#FFFFFF]"
+                          }`}
                       >
                         <div className="flex items-center space-x-2.5 overflow-hidden">
                           <MessageSquare className="w-4 h-4 shrink-0 text-[#38BDF8]" />
